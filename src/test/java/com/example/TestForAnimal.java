@@ -11,36 +11,33 @@ import static org.junit.Assert.assertEquals;
 @RunWith(Parameterized.class)
 public class TestForAnimal {
 
-    private String animalKind;
-    private List expected;
+    private final String animalKind;
+    private final List expected;
 
-    public TestForAnimal (String animalKind, List expected){
+    public TestForAnimal(String animalKind, List expected) {
         this.animalKind = animalKind;
         this.expected = expected;
     }
 
     @Parameterized.Parameters
-    public static Object[][] getFoodTestAnimal(){
-        return new Object[][] {
-                {"Травоядное", List.of("Трава", "Различные растения")},
-                {"Хищник", List.of("Животные", "Птицы", "Рыба")}
-        };
+    public static Object[][] getFoodTestAnimal() {
+        return new Object[][]{{"Травоядное", List.of("Трава", "Различные растения")}, {"Хищник", List.of("Животные", "Птицы", "Рыба")}};
     }
 
     @Test
     public void getFoodTest() throws Exception {
         Animal animal = new Animal();
         List<String> actual = animal.getFood(animalKind);
-        assertEquals(expected, actual);
+        assertEquals("Ожидаемый и фактический результат не совпадают.", expected, actual);
     }
 
     @Test
-    public void testGetFoodException() throws Exception {
+    public void testGetFoodException() {
         Animal animal = new Animal();
         try {
             List<String> actual = animal.getFood("ololo");
         } catch (Exception exception) {
-            assertEquals("Неизвестный вид животного, используйте значение Травоядное или Хищник", exception.getMessage());
+            assertEquals("Ожидаемый и фактический результат не совпадают.", "Неизвестный вид животного, используйте значение Травоядное или Хищник", exception.getMessage());
         }
     }
 }

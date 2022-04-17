@@ -9,11 +9,11 @@ import static org.junit.Assert.assertEquals;
 public class TestForFeline {
 
     @Test
-    public void getKittensForFelineTest(){
+    public void getKittensForFelineTest() {
         Feline feline = new Feline();
         int actual = feline.getKittens(1);
         int expected = 1;
-        assertEquals(expected, actual);
+        assertEquals("Kittens count = 1", expected, actual);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class TestForFeline {
         Feline feline = new Feline();
         String actual = feline.getFamily("Кошачьи");
         String expected = "Кошачьи";
-        assertEquals(expected, actual);
+        assertEquals("Ожидаемый результат: Кошачьи", expected, actual);
     }
 
     @Test
@@ -29,7 +29,7 @@ public class TestForFeline {
         Feline feline = new Feline();
         List<String> actual = feline.eatMeat();
         List<String> expected = List.of("Животные", "Птицы", "Рыба");
-        assertEquals(expected, actual);
+        assertEquals("Ожидаемый результат:[Животные, Птицы, Рыба].", expected, actual);
     }
 
 }
